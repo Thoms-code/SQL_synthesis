@@ -1,4 +1,4 @@
-# commande MySQL
+# Commande MySQL
 ## Connexion
 ### Se connecter
 ```sql
@@ -65,6 +65,20 @@ GRANT ALL PRIVILEGES ON nom_base.* TO 'student'@'localhost';
 > définit l'utilisateur (et son hôte) auquel on accorde ces droits.
 
 ## DATABASE
+### Conventions pour cette synthèse 
+**Nommage des données:**
+*Ce ne sont pas les conventions universelle, mais les mienne que j'utiliserai dans cette synthèse, il n'y a pas vraiment de convention universelle c'est comme on le souhaite mais il faut rester cohérent et s'y tenir.*
+> **Base de données**
+> Mettre en majuscule, séparé par un underscore si nécessaire:
+> `LARAVEL ou FR_BE`
+
+> **Tables de données:**
+> Première lettre en majuscule, séparé par un underscore si nécessaire:
+> `Animaux ou Personne_fr`
+
+> **Lignes de données:**
+> Mettre en minuscule, séparé par un underscore si nécessaire:
+> `chien ou date_naissance`
 
 ### Créer un base de données
 ```sql
@@ -139,36 +153,43 @@ DESCRIBE Animal;
 
 la commande *ALTER*
 ```sql
-ALTER TABLE nom_table ADD ... -- permet d'ajouter quelque chose (une colonne par exemple)
+ALTER TABLE Nom_table RENAME TO ... --permet de changer le nom de la table
 
-ALTER TABLE nom_table DROP ... -- permet de retirer quelque chose 
+ALTER TABLE Nom_table ADD ... -- permet d'ajouter quelque chose (une colonne par exemple)
 
-ALTER TABLE nom_table CHANGE ...
-ALTER TABLE nom_table MODIFY ... -- permettent de modifier une colonne
+ALTER TABLE Nom_table DROP ... -- permet de retirer quelque chose 
+
+ALTER TABLE Nom_table CHANGE ...
+ALTER TABLE Nom_table MODIFY ... -- permettent de modifier une colonne
+```
+Modification du nom de la table:
+```sql
+ALTER TABLE Nom_table
+RENAME TO nouveau_Nom_table;
 ```
 Ajout d'une colonne:
 *(on va ajouter une colonne "date_insertion" de type DATE en exemple)*
 ```sql
-ALTER TABLE nom_table
+ALTER TABLE Nom_table
 ADD COLUMN date_insertion DATE NOT NULL;
 ```
 Suppression d'un colonne:
 *(on va supprimer la colonne date_insertion)*
 ```sql
-ALTER TABLE nom_table
+ALTER TABLE Nom_table
 DROP COLUMN date_insertion;
 ```
 Modification d'une colonne:
 Avec CHANGE:
 (CHANGE peut modifier le nom **et** la description d'une colonne)
 ```sql
-ALTER TABLE nom_table
+ALTER TABLE Nom_table
 CHANGE ancien_nom nouveau_nom nouvelle_description;
 ```
 Avec MODIFY:
 (MODIFY ne peut changer **que** la description)
 ```sql
-ALTER TABLE nom_table 
+ALTER TABLE Nom_table 
 MODIFY nom_colonne nouvelle_description;
 ```
 Attention les descriptions doivent être complétement réécrite.
@@ -176,13 +197,13 @@ Attention les descriptions doivent être complétement réécrite.
 ### Les Lignes de données
 **Via la console**
 ```sql
-INSERT INTO nom_table (espece, sexe, date_naissance, nom) 
+INSERT INTO Nom_table (espece, sexe, date_naissance, nom) 
 VALUES ('chien', 'F', '2008-12-06 05:18:00', 'Caroline'),
         ('chat', 'M', '2008-09-11 15:38:00', 'Bagherra'),
         ('tortue', NULL, '2010-08-23 05:18:00', NULL);
 ```
 > **En détails:**
-> `INSERT INTO nom_table`: sélectionne la bonne table (littéralement "insérer dans nom_table").
+> `INSERT INTO Nom_table`: sélectionne la bonne table (littéralement "insérer dans Nom_table").
 > `(espece, sexe, date_naissance, nom)`: se sont les nom des colonnes dans lesquels on va insérer nos données.
 > `VALUES`: exprime que l'on va insérer des valeurs.
 > `('chien', 'F', '2008-12-06 05:18:00', 'Caroline'),`: ce sont les valeurs que l'ont veut rajouter qui doivent correspondre a leurs type.
@@ -203,10 +224,13 @@ Charles;Myeur;1994-12-30
 Bruno;Debor;1978-05-12
 Mireille;Franelli;1990-08-23
 ```
+
+***Attention** le fichier doit se terminer par un saut de ligne.*
+
 *Commande pour le lire dans mySQL:*
 ```sql
 LOAD DATA [LOCAL] INFILE 'nom_fichier'
-INTO TABLE nom_table
+INTO TABLE Nom_table
 [FIELDS
     [TERMINATED BY '\t']
     [ENCLOSED BY '']
@@ -216,7 +240,7 @@ INTO TABLE nom_table
     [STARTING BY '']    
     [TERMINATED BY '\n']
 ]
-[IGNORE nombre LINES]
+[IGNORE Nombre LINES]
 [(nom_colonne,...)];
 ```
 > **En détails :**
@@ -233,3 +257,11 @@ INTO TABLE nom_table
 > > `TERMINATED BY`: Définit le caractère de fin de ligne (`'\n'` par défaut).
 > 
 >`IGNORE nombre LINES`: Ignore un certain nombre de lignes. Par exemple, si la première ligne de votre fichier contient les noms des colonnes, vous ne voulez pas l'insérer dans votre table. Il suffit alors d'utiliser `IGNORE 1 LINES`.
+
+## SÉLECTION DE DONNÉES
+### Méthode SELECT
+`SELECT` permet d'afficher les données d'un tableau.
+*Syntaxe:*
+```sql
+SELECT  * FROM Nom_table;
+```
