@@ -73,16 +73,30 @@ GRANT ALL PRIVILEGES ON nom_base.* TO 'student'@'localhost';
 > `LARAVEL ou FR_BE`
 
 > **Tables de données:**
-> Première lettre en majuscule, séparé par un underscore si nécessaire:
-> `Animaux ou Personne_fr`
+> Première lettre de chaque mots en majuscule, séparé par un underscore si nécessaire:
+> `Animaux ou Personne_Fr`
+
+> **Colonnes de données:**
+> Premiere lettre du premier mots en majuscule, séparé par un underscore si nécessaire:
+> `Espece ou Date_naissance`
 
 > **Lignes de données:**
 > Mettre en minuscule, séparé par un underscore si nécessaire:
-> `chien ou date_naissance`
+> `chien ou 30_05_2018`
+
+**Synthaxe des commande:**
+> **Majuscule pour les requêtes:**
+> Les commandes (requêtes) qui ne sont pas des données seront toujours écrite en majuscule:
+> ```sql
+> CREATE DATABASE NOM_BASE;
+> --
+> DESCRIBE Animal;
+> ```
+
 
 ### Créer un base de données
 ```sql
-CREATE DATABASE nom_base CHARACTER SET 'utf8';
+CREATE DATABASE NOM_BASE CHARACTER SET 'utf8';
 ```
 >```sql
 >CHARACTER SET 'utf8'
@@ -90,13 +104,13 @@ CREATE DATABASE nom_base CHARACTER SET 'utf8';
 >Permet de mettre la base de données au format "utf-8".
 ### Supprimer une base de données
 ```sql
-DROP DATABASE nom_base;
+DROP DATABASE NOM_BASE;
 ```
 *si la base de donnée n'existe pas, mySQL affichera:*
- `ERROR 1008 (HY000) : Can't drop database 'nom_base'; database doesn't exist`
+ `ERROR 1008 (HY000) : Can't drop database 'NOM_BASE'; database doesn't exist`
 >### variante
 >```sql
->DROP DATABASE IF EXISTS nom_base;
+>DROP DATABASE IF EXISTS NOM_BASE;
 >```
 >*dans ce cas si la base de données n'existe pas, mySQL affichera:*
 >`Query OK, 0 rows affected, 1 warning (0.00 sec)`
@@ -107,11 +121,11 @@ DROP DATABASE nom_base;
 >*cela affiche un tableau:*
 >| level | code | message|
 >|--|--|--
->|Note|1008|Can't drop database 'nom_base'; database doesn't exist
+>|Note|1008|Can't drop database 'NOM_BASE'; database doesn't exist
 ## Utilisation d'une base de données
 **Accéder a la database**
 ```sql
-USE nomdebase;
+USE NOM_BASE;
 ```
 ### Les Tables
 **Créer une table**
