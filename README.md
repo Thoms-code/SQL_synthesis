@@ -49,7 +49,7 @@ CREATE USER 'student'@'localhost' IDENTIFIED BY 'mot_de_passe';
 
 ### Donner tout les privilèges a un utilisateur
 ```sql
-GRANT ALL PRIVILEGES ON nom_base.* TO 'student'@'localhost';
+GRANT ALL PRIVILEGES ON NOM_BASE.* TO 'student'@'localhost';
 ```
 >```sql
 > GRANT ALL PRIVILEGES
