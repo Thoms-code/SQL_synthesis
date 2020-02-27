@@ -1,4 +1,4 @@
-# Commande MySQL
+# Synthèse MySQL
 ## Connexion
 ### Se connecter
 ```sql
@@ -93,7 +93,16 @@ GRANT ALL PRIVILEGES ON nom_base.* TO 'student'@'localhost';
 > DESCRIBE Animal;
 > ```
 
+> **Commande optionelles:**
+> Les commande qui ne sont pas necessaire pour le fonctionnement generale d'une commande sont entre `[ ]` crochets, elle servent en general a donner des precisions, mais peuvent etre obligatoire pour certaine manipulations:
+> ```sql
+>COMMANDE [OPTION] Nom_Table;
+>```
 
+> **Les requetes se terminent par un point-virgule:**
+> ```sql
+> SHOW WARNINGS;
+> ```
 ### Créer un base de données
 ```sql
 CREATE DATABASE NOM_BASE CHARACTER SET 'utf8';
