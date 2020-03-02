@@ -13,7 +13,7 @@ mysql -u root -p
 >ou
 >-user root
 >```
->identifie l'utilisateur (par default l'utilsateur est "root")
+>identifie l'utilisateur (par default l’utilisateur est "root")
 >```zsh
 >-p
 >ou
@@ -49,7 +49,7 @@ CREATE USER 'student'@'localhost' IDENTIFIED BY 'mot_de_passe';
 
 ### Donner tout les privilèges a un utilisateur
 ```sql
-GRANT ALL PRIVILEGES ON NOM_BASE.* TO 'student'@'localhost';
+GRANT ALL PRIVILEGES ON nom_base.* TO 'student'@'localhost';
 ```
 >```sql
 > GRANT ALL PRIVILEGES
@@ -64,8 +64,8 @@ GRANT ALL PRIVILEGES ON NOM_BASE.* TO 'student'@'localhost';
 > ```
 > définit l'utilisateur (et son hôte) auquel on accorde ces droits.
 
-## DATABASE
-### Conventions pour cette synthèse 
+## DATABASES
+### Conventions pour cette synthèse
 **Nommage des données:**
 *Ce ne sont pas les conventions universelle, mais les mienne que j'utiliserai dans cette synthèse, il n'y a pas vraiment de convention universelle c'est comme on le souhaite mais il faut rester cohérent et s'y tenir.*
 > **Base de données**
@@ -77,14 +77,14 @@ GRANT ALL PRIVILEGES ON NOM_BASE.* TO 'student'@'localhost';
 > `Animaux ou Personne_Fr`
 
 > **Colonnes de données:**
-> Premiere lettre du premier mots en majuscule, séparé par un underscore si nécessaire:
+> Première lettre du premier mots en majuscule, séparé par un underscore si nécessaire:
 > `Espece ou Date_naissance`
 
 > **Lignes de données:**
 > Mettre en minuscule, séparé par un underscore si nécessaire:
 > `chien ou 30_05_2018`
 
-**Synthaxe des commande:**
+**Syntaxe des commande:**
 > **Majuscule pour les requêtes:**
 > Les commandes (requêtes) qui ne sont pas des données seront toujours écrite en majuscule:
 > ```sql
@@ -93,19 +93,21 @@ GRANT ALL PRIVILEGES ON NOM_BASE.* TO 'student'@'localhost';
 > DESCRIBE Animal;
 > ```
 
-> **Commande optionelles:**
-> Les commande qui ne sont pas necessaire pour le fonctionnement generale d'une commande sont entre `[ ]` crochets, elle servent en general a donner des precisions, mais peuvent etre obligatoire pour certaine manipulations:
+> **Commande optionnelles:**
+> Les commande qui ne sont pas nécessaire pour le fonctionnement générale d'une commande sont entre `[ ]` crochets, elle servent en général a donner des précisions, mais peuvent être obligatoire pour certaine manipulations:
 > ```sql
 >COMMANDE [OPTION] Nom_Table;
 >```
 
-> **Les requetes se terminent par un point-virgule:**
+> **Les requêtes se terminent par un point-virgule:**
 > ```sql
 > SHOW WARNINGS;
 > ```
 ### Créer un base de données
 ```sql
 CREATE DATABASE NOM_BASE CHARACTER SET 'utf8';
+ou
+CREATE DATABASE NOM_BASE CHARACTER SET 'UTF8MB4'; --(nouveau)
 ```
 >```sql
 >CHARACTER SET 'utf8'
@@ -157,7 +159,7 @@ id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
 ```
 >`id` : nom de la colonne.
 >`SMALLINT`: type de colonne.
->` UNSIGNED`: colonne toujours positive.
+>`UNSIGNED`: colonne toujours positive.
 >`NOT NULL`: ne peux pas être vide.
 >`AUTO_INCREMENT`: s’incrémente a chaque donnée rajoutée (+1).
 >`,`: fin de description de cette colonne.
@@ -231,7 +233,7 @@ VALUES ('chien', 'F', '2008-12-06 05:18:00', 'Caroline'),
 > `VALUES`: exprime que l'on va insérer des valeurs.
 > `('chien', 'F', '2008-12-06 05:18:00', 'Caroline'),`: ce sont les valeurs que l'ont veut rajouter qui doivent correspondre a leurs type.
 > > **Attention:**
-	> il faut rajouter des données dans TOUTES les colonnes que l'on a mis entre parenthèse, si il y a une colomne ou je neux pas mettre de donnée je mets 'NULL'.
+	> il faut rajouter des données dans TOUTES les colonnes que l'on a mis entre parenthèse, si il y a une colonne ou je peux pas mettre de donnée je mets 'NULL'.
 
 **Exécuter des commandes via un fichier.sql**
 ```sql
