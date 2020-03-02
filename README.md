@@ -288,5 +288,5 @@ INTO TABLE Nom_table
 `SELECT` permet d'afficher les données d'un tableau.
 *Syntaxe:*
 ```sql
-SELECT  * FROM Nom_table;
+SELECT  * FROM Nom_Table;
 ```
